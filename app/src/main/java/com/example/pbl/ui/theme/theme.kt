@@ -15,9 +15,9 @@ fun PBLTheme(
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-        darkColors()
+        darkColors
     } else {
-        lightColors()
+        lightColors
     }
     MaterialTheme(
         colorScheme = colors,

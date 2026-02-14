@@ -22,21 +22,10 @@ val Roboto = FontFamily(
 
 // smth to remember, there is display, title, label, body, and headline + large/medium/small
 val Typography = Typography (
-    displayLarge = TextStyle(
+    titleLarge = TextStyle (
         fontFamily = Roboto,
         fontWeight = FontWeight.Bold,
-        fontSize = 60.sp
+        fontSize = 22.sp
     ),
-    displayMedium = TextStyle (
-        fontFamily = Roboto,
-        fontWeight = FontWeight.Medium,
-        fontSize = 30.sp
-    ),
-    displaySmall = TextStyle (
-        fontFamily = Roboto,
-        fontWeight = FontWeight.Normal,
-        fontSize = 20.sp
-    ),
-
 )
 

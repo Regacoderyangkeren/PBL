@@ -7,44 +7,64 @@ import androidx.compose.material3.lightColorScheme
 // Material 3 Colourrrrrs
 import androidx.compose.ui.graphics.Color
 
-// Compose!
-import androidx.compose.runtime.Composable
-
 // Light :angel: Theme Colourssss
-val lightThemePrimary = Color(0xFF001881)
-val lightThemePrimaryContainer = Color(0xFFB3BAD9)
-val lightThemeOnPrimaryContainer = Color(0xFF000A34)
-val lightThemeSecondary = Color(0xFF81007F)
-val lightThemeSecondaryContainer = Color(0xFFFFD5FF)
-val lightThemeOnSecondaryContainer = Color(0xFF3F003F)
-val lightThemeTertiary = Color(0xFF4C8100)
-val lightThemeTertiaryContainer = Color(0xFFD0FFB3)
-val lightThemeOnTertiaryContainer = Color(0xFF122100)
-val lightThemeBackground = Color(0xFFFFFFFF)
-val lightThemeSurface = Color(0xFFB4B4B4)
-val lightThemeError = Color(0xFFD32F2F)
-val lightThemeErrorContainer = Color(0xFFFFCDD2)
-val lightThemeOnErrorContainer = Color(0xFFB71C1C)
+
+// biru normal
+private val lightThemePrimary = Color(0xFF1A237E)
+private val lightThemePrimaryContainer = Color(0xFFC5CAE9)
+private val lightThemeOnPrimaryContainer = Color(0xFF0D1445)
+
+// ungu janda
+private val lightThemeSecondary = Color(0xFF6A1B9A)
+private val lightThemeSecondaryContainer = Color(0xFFE1BEE7)
+private val lightThemeOnSecondaryContainer = Color(0xFF2A083D)
+
+// hijau :thumbsup:
+private val lightThemeTertiary = Color(0xFF2E7D32)
+private val lightThemeTertiaryContainer = Color(0xFFC8E6C9)
+private val lightThemeOnTertiaryContainer = Color(0xFF102A13)
+
+// putih normal
+private val lightThemeBackground = Color(0xFFFFFFFF)
+private val lightThemeSurface = Color(0xFFF5F5F5)
+
+// merah merona
+private val lightThemeError = Color(0xFFD32F2F)
+private val lightThemeErrorContainer = Color(0xFFFFCDD2)
+private val lightThemeOnErrorContainer = Color(0xFF7F0000)
+
 
 // Dark :demon: Theme Colourssss
-val darkThemePrimary = Color(0xFFFFEB3B)
-val darkThemePrimaryContainer = Color(0xFFFFFAC4)
-val darkThemeOnPrimaryContainer = Color(0xFF3B4500)
-val darkThemeSecondary = Color(0xFF3BFF4E)
-val darkThemeSecondaryContainer = Color(0xFFCCFFE4)
-val darkThemeOnSecondaryContainer = Color(0xFF00210F)
-val darkThemeTertiary = Color(0xFF9D3BFF)
-val darkThemeTertiaryContainer = Color(0xFFE5CCFF)
-val darkThemeOnTertiaryContainer = Color(0xFF29005A)
-val darkThemeBackground = Color(0xFF000000)
-val darkThemeSurface = Color(0xFF2C2C2C)
-val darkThemeError = Color(0xFFD32F2F)
-val darkThemeErrorContainer = Color(0xFFFFCDD2)
-val darkThemeOnErrorContainer = Color(0xFFB71C1C)
 
-// Compose 'em light theme coloursssss
-@Composable
-fun lightColors() = lightColorScheme(
+// blue but gey
+private val darkThemePrimary = Color(0xFFFFC107)
+private val darkThemePrimaryContainer = Color(0xFF4A3B00)
+private val darkThemeOnPrimaryContainer = Color(0xFFFFF1C1)
+
+// purple so soft it lowk feels like femboy-y
+private val darkThemeSecondary = Color(0xFFFF9800)
+private val darkThemeSecondaryContainer = Color(0xFF4A2600)
+private val darkThemeOnSecondaryContainer = Color(0xFFFFE0B2)
+
+
+// ykw? this green is fine, they are cool
+private val darkThemeTertiary = Color(0xFFFF5722)
+private val darkThemeTertiaryContainer = Color(0xFF3A1400)
+private val darkThemeOnTertiaryContainer = Color(0xFFFFDAD1)
+
+
+// hitam rahhhhh
+private val darkThemeBackground = Color(0xFF121212)
+private val darkThemeSurface = Color(0xFF1E1E1E)
+
+// red if they are not so mad or idk
+private val darkThemeError = Color(0xFFEF9A9A)
+private val darkThemeErrorContainer = Color(0xFF5F2120)
+private val darkThemeOnErrorContainer = Color(0xFFFFDAD6)
+
+
+// We use 'em light theme coloursssss
+val lightColors = lightColorScheme(
     primary = lightThemePrimary,
     primaryContainer = lightThemePrimaryContainer,
     onPrimaryContainer = lightThemeOnPrimaryContainer,
@@ -62,8 +82,7 @@ fun lightColors() = lightColorScheme(
 )
 
 // repeat
-@Composable
-fun darkColors() = darkColorScheme(
+val darkColors = darkColorScheme(
     primary = darkThemePrimary,
     primaryContainer = darkThemePrimaryContainer,
     onPrimaryContainer = darkThemeOnPrimaryContainer,
