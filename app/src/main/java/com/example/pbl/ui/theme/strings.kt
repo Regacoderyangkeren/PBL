@@ -1,2 +1,25 @@
 package com.example.pbl.ui.theme
 
+//static username string
+const val usernameStatic = "Username"
+
+const val password = "Password"
+const val login = "Login"
+const val home = "Home"
+const val signIn = "Sign In"
+const val signUp = "Sign Up"
+const val welcome = "Welcome to the Home Screen!"
+const val errorInputUsernamePassword = "Please enter both username and password."
+const val errorInvalidCredentials = "Invalid username or password. Please try again."
+const val titleDrop = "title"
+const val subtitleDrop = "subtitle"
+const val landingPagebtn1 = "Learn more!"
+const val landingPagebtn2 = "Skip to Login"
+const val landingPage1 = "put smth smth here"
+const val landingpagesub1 = "put smth smth here1"
+const val landingPage2 = "put smth smth here2"
+const val landingpagesub2 = "put smth smth here2"
+const val landingPage3 = "put smth smth here3"
+const val landingpagesub3 = "put smth smth here3"
+const val landingPage4 = "put smth smth here4"
+const val landingpagesub4 = "put smth smth here4"

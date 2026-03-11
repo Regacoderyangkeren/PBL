@@ -1,14 +1,9 @@
 package com.example.pbl.ui.theme
 
-// fonts
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-
-// from res
 import com.example.pbl.R
-
-// typography
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
@@ -25,7 +20,12 @@ val Typography = Typography (
     titleLarge = TextStyle (
         fontFamily = Roboto,
         fontWeight = FontWeight.Bold,
-        fontSize = 22.sp
+        fontSize = 32.sp
     ),
+    displayLarge = TextStyle (
+        fontFamily = Roboto,
+        fontWeight = FontWeight.Medium,
+        fontSize = 45.sp
+    )
 )
 

@@ -1,20 +1,16 @@
 package com.example.pbl.ui.theme
 
-// Light and Dark More
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
-
-// Material 3 Colourrrrrs
 import androidx.compose.ui.graphics.Color
 
 // Light :angel: Theme Colourssss
-
 // biru normal
 private val lightThemePrimary = Color(0xFF1A237E)
 private val lightThemePrimaryContainer = Color(0xFFC5CAE9)
 private val lightThemeOnPrimaryContainer = Color(0xFF0D1445)
 
-// ungu janda
+// ungu imoet
 private val lightThemeSecondary = Color(0xFF6A1B9A)
 private val lightThemeSecondaryContainer = Color(0xFFE1BEE7)
 private val lightThemeOnSecondaryContainer = Color(0xFF2A083D)
@@ -35,32 +31,29 @@ private val lightThemeOnErrorContainer = Color(0xFF7F0000)
 
 
 // Dark :demon: Theme Colourssss
+// gojo amplify technique fr
+private val darkThemePrimary = Color(0xFF9FA8DA)
+private val darkThemePrimaryContainer = Color(0xFF1A237E)
+private val darkThemeOnPrimaryContainer = Color(0xFFE8EAF6)
 
-// blue but gey
-private val darkThemePrimary = Color(0xFFFFC107)
-private val darkThemePrimaryContainer = Color(0xFF4A3B00)
-private val darkThemeOnPrimaryContainer = Color(0xFFFFF1C1)
+// iunno 'bout this bro seems femboy-ish
+private val darkThemeSecondary = Color(0xFFCE93D8)
+private val darkThemeSecondaryContainer = Color(0xFF4A148C)
+private val darkThemeOnSecondaryContainer = Color(0xFFF3E5F5)
 
-// purple so soft it lowk feels like femboy-y
-private val darkThemeSecondary = Color(0xFFFF9800)
-private val darkThemeSecondaryContainer = Color(0xFF4A2600)
-private val darkThemeOnSecondaryContainer = Color(0xFFFFE0B2)
+// i like this one actually
+private val darkThemeTertiary = Color(0xFFA5D6A7)
+private val darkThemeTertiaryContainer = Color(0xFF1B5E20)
+private val darkThemeOnTertiaryContainer = Color(0xFFE8F5E9)
 
-
-// ykw? this green is fine, they are cool
-private val darkThemeTertiary = Color(0xFFFF5722)
-private val darkThemeTertiaryContainer = Color(0xFF3A1400)
-private val darkThemeOnTertiaryContainer = Color(0xFFFFDAD1)
-
-
-// hitam rahhhhh
+// background
 private val darkThemeBackground = Color(0xFF121212)
 private val darkThemeSurface = Color(0xFF1E1E1E)
 
-// red if they are not so mad or idk
-private val darkThemeError = Color(0xFFEF9A9A)
-private val darkThemeErrorContainer = Color(0xFF5F2120)
-private val darkThemeOnErrorContainer = Color(0xFFFFDAD6)
+// error if they are not that mad
+private val darkThemeError = Color(0xFFEF5350)
+private val darkThemeErrorContainer = Color(0xFF7F0000)
+private val darkThemeOnErrorContainer = Color(0xFFFFCDD2)
 
 
 // We use 'em light theme coloursssss
