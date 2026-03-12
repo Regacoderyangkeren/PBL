@@ -22,7 +22,9 @@ fun SignInPage(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(50.dp))
+
             Loginpageimg()
+            
             }
         }
     }
