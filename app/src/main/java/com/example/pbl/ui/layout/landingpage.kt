@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.pbl.ui.components.*
 import com.example.pbl.ui.theme.*
+
 @Composable
 fun LandingPage(navController: NavController) {
     Surface(
@@ -19,22 +20,21 @@ fun LandingPage(navController: NavController) {
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Box(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.TopCenter
             ) {
                 LandingWaveBG()
 
                 Column(
                     modifier = Modifier.padding(top = 125.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Landingpageimg()
-
-                    Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
                         text = titleDrop,
@@ -43,31 +43,31 @@ fun LandingPage(navController: NavController) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(40.dp))
-
             Text(
                 text = subtitleDrop,
-                style = MaterialTheme.typography.displayLarge
+                style = MaterialTheme.typography.displayLarge,
+                modifier = Modifier.padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.weight(1f))
 
             AppFilledButton(
-                text = landingPagebtn1,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 32.dp, vertical = 12.dp)
-            ) {
-                navController.navigate("learn")
-            }
-
-            AppOutlinedButton(
-                text = landingPagebtn2,
+                onClick = { navController.navigate("learn") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 32.dp)
             ) {
-                navController.navigate("login")
+                Text(text = landingPagebtn1)
+            }
+
+            AppOutlinedButton(
+                onClick = { navController.navigate("login") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp)
+                    .padding(bottom = 32.dp)
+            ) {
+                Text(text = landingPagebtn2)
             }
         }
     }

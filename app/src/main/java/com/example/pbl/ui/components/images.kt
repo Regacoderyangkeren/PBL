@@ -6,6 +6,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.layout.ContentScale
@@ -20,7 +21,8 @@ fun Landingpageimg() {
     Image(
         painter = testGambar,
         contentDescription = "test gambar",
-        modifier = Modifier.size(150.dp),
+        modifier = Modifier
+            .size(150.dp),
         contentScale = ContentScale.Crop
     )
 }

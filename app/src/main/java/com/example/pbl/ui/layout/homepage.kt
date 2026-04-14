@@ -13,10 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 
 @Composable
 fun HomePage(navController: NavController) {
-    // Get the Firebase Auth instance
     val auth = FirebaseAuth.getInstance()
 
-    Scaffolds(navController = navController) { innerPadding: PaddingValues ->
+    AppScaffold(navController = navController) { innerPadding: PaddingValues ->
         Surface(
             modifier = Modifier
                 .fillMaxSize()
@@ -29,7 +28,7 @@ fun HomePage(navController: NavController) {
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = landingPage2,
+                    text = homeTitle,
                     style = MaterialTheme.typography.titleLarge
                 )
 
@@ -37,14 +36,15 @@ fun HomePage(navController: NavController) {
 
                 // Temporary Logout Button
                 AppFilledButton(
-                    text = "Logout",
                     onClick = {
                         auth.signOut()
-                        navController.navigate("landingpage") {
-                            popUpTo("homepage") { inclusive = true }
+                        navController.navigate("landing") {
+                            popUpTo("home") { inclusive = true }
                         }
                     }
-                )
+                ) {
+                    Text(logoutButton)
+                }
             }
         }
     }

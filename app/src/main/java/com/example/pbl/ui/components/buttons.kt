@@ -10,26 +10,28 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.pbl.ui.animation.appButtonAnim
+import com.example.pbl.ui.uihelpers.preventButtonSpamClicks
+import com.example.pbl.ui.animation.appColorButtonAnim
 
 @Composable
 fun AppFilledButton(
-    text: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     containerColor: Color = MaterialTheme.colorScheme.primary,
     contentColor: Color = MaterialTheme.colorScheme.onPrimary,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
     pressedContentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
-    onClick: () -> Unit
+    content: @Composable () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
+    val safeClick = preventButtonSpamClicks(onClick = onClick)
 
     Button(
-        onClick = onClick,
+        onClick = safeClick,
         modifier = modifier,
         interactionSource = interactionSource,
-        colors = appButtonAnim(
+        colors = appColorButtonAnim(
             isSelected = isPressed,
             defaultContainer = containerColor,
             selectedContainer = pressedContainerColor,
@@ -38,28 +40,29 @@ fun AppFilledButton(
         ),
         shape = MaterialTheme.shapes.medium
     ) {
-        Text(text = text)
+        content()
     }
 }
 
 @Composable
 fun AppTonalButton(
-    text: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     containerColor: Color = MaterialTheme.colorScheme.secondaryContainer,
     contentColor: Color = MaterialTheme.colorScheme.onSecondaryContainer,
     pressedContainerColor: Color = MaterialTheme.colorScheme.secondary,
     pressedContentColor: Color = MaterialTheme.colorScheme.onSecondary,
-    onClick: () -> Unit
+    content: @Composable () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
+    val safeClick = preventButtonSpamClicks(onClick = onClick)
 
     FilledTonalButton(
-        onClick = onClick,
+        onClick = safeClick,
         modifier = modifier,
         interactionSource = interactionSource,
-        colors = appButtonAnim(
+        colors = appColorButtonAnim(
             isSelected = isPressed,
             defaultContainer = containerColor,
             selectedContainer = pressedContainerColor,
@@ -68,28 +71,29 @@ fun AppTonalButton(
         ),
         shape = MaterialTheme.shapes.medium
     ) {
-        Text(text = text)
+        content()
     }
 }
 
 @Composable
 fun AppOutlinedButton(
-    text: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     contentColor: Color = MaterialTheme.colorScheme.primary,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f),
     pressedContentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
-    onClick: () -> Unit
+    content: @Composable () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
+    val safeClick = preventButtonSpamClicks(onClick = onClick)
 
     OutlinedButton(
-        onClick = onClick,
+        onClick = safeClick,
         modifier = modifier,
         interactionSource = interactionSource,
         shape = MaterialTheme.shapes.medium,
-        colors = appButtonAnim(
+        colors = appColorButtonAnim(
             isSelected = isPressed,
             defaultContainer = Color.Transparent,
             selectedContainer = pressedContainerColor,
@@ -101,28 +105,29 @@ fun AppOutlinedButton(
             color = if (isPressed) MaterialTheme.colorScheme.primaryContainer else contentColor
         )
     ) {
-        Text(text = text)
+        content()
     }
 }
 
 @Composable
 fun AppElevatedButton(
-    text: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     containerColor: Color = MaterialTheme.colorScheme.surface,
     contentColor: Color = MaterialTheme.colorScheme.primary,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
     pressedContentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
-    onClick: () -> Unit
+    content: @Composable () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
+    val safeClick = preventButtonSpamClicks(onClick = onClick)
 
     ElevatedButton(
-        onClick = onClick,
+        onClick = safeClick,
         modifier = modifier,
         interactionSource = interactionSource,
-        colors = appButtonAnim(
+        colors = appColorButtonAnim(
             isSelected = isPressed,
             defaultContainer = containerColor,
             selectedContainer = pressedContainerColor,
@@ -131,27 +136,28 @@ fun AppElevatedButton(
         ),
         shape = MaterialTheme.shapes.medium
     ) {
-        Text(text = text)
+        content()
     }
 }
 
 @Composable
 fun AppTextButton(
-    text: String,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     contentColor: Color = MaterialTheme.colorScheme.primary,
     pressedContentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f),
-    onClick: () -> Unit
+    content: @Composable () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
+    val safeClick = preventButtonSpamClicks(onClick = onClick)
 
     TextButton(
-        onClick = onClick,
+        onClick = safeClick,
         modifier = modifier,
         interactionSource = interactionSource,
-        colors = appButtonAnim(
+        colors = appColorButtonAnim(
             isSelected = isPressed,
             defaultContainer = Color.Transparent,
             selectedContainer = pressedContainerColor,
@@ -160,6 +166,6 @@ fun AppTextButton(
         ),
         shape = MaterialTheme.shapes.medium
     ) {
-        Text(text = text)
+        content()
     }
 }

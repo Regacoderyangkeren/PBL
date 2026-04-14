@@ -8,7 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.example.pbl.ui.animation.appTextFieldAnim
+import com.example.pbl.ui.animation.appColorTextFieldAnim
 
 @Composable
 fun AppTextField(
@@ -30,7 +30,7 @@ fun AppTextField(
         modifier = modifier,
         interactionSource = interactionSource,
         placeholder = { Text(placeholder) },
-        colors = appTextFieldAnim(
+        colors = appColorTextFieldAnim(
             isSelected = IsFocused,
             selectedContainer = focusedContainerColor,
             defaultContainer = containerColor,
@@ -61,7 +61,7 @@ fun AppOutlinedTextField(
         modifier = modifier,
         interactionSource = interactionSource,
         placeholder = { Text(placeholder) },
-        colors = appTextFieldAnim(
+        colors = appColorTextFieldAnim(
             isSelected = IsFocused,
             selectedContainer = focusedContainerColor,
             defaultContainer = containerColor,

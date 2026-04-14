@@ -12,7 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.pbl.ui.components.AppFilledButton
+import com.example.pbl.ui.components.*
+import com.example.pbl.ui.uihelpers.CardContentWrapper
+import com.example.pbl.ui.theme.*
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -21,7 +23,12 @@ fun SignUpPage(navController: NavController) {
     var password by remember { mutableStateOf("") }
     val auth = FirebaseAuth.getInstance()
 
-    Surface(modifier = Modifier.fillMaxSize()) {
+    Surface(
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding(),
+        color = MaterialTheme.colorScheme.background
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -29,43 +36,56 @@ fun SignUpPage(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text("Create Account", style = MaterialTheme.typography.headlineLarge)
-            Spacer(modifier = Modifier.height(32.dp))
-
-            OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("Email") },
-                modifier = Modifier.fillMaxWidth()
+            Text(
+                signUpTitle,
+                style = MaterialTheme.typography.titleLarge
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                modifier = Modifier.fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation()
-            )
+            AppStaticFilledCard(modifier = Modifier.fillMaxWidth()) {
+                CardContentWrapper {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        AppTextField(
+                            value = email,
+                            onValueChange = { email = it },
+                            placeholder = signUpEmail,
+                            modifier = Modifier.fillMaxWidth()
+                        )
 
-            Spacer(modifier = Modifier.height(32.dp))
+                        AppTextField(
+                            value = password,
+                            onValueChange = { password = it },
+                            placeholder = password,
+                            modifier = Modifier.fillMaxWidth()
+                        )
 
-            AppFilledButton(
-                text = "Sign Up",
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    if (email.isNotEmpty() && password.isNotEmpty()) {
-                        auth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) navController.navigate("homepage")
+                        AppFilledButton(
+                            modifier = Modifier.fillMaxWidth(),
+                            onClick = {
+                                // kalau email dan password tidak kosong, maka buat akun
+                                if (email.isNotEmpty() && password.isNotEmpty()) {
+                                    auth.createUserWithEmailAndPassword(email, password)
+                                        // kalau berhasil, arahkan ke home
+                                        .addOnCompleteListener { task ->
+                                            if (task.isSuccessful) navController.navigate("home") {
+                                                popUpTo("register") { inclusive = true }
+                                            }
+                                        }
+                                }
                             }
+                        ) {
+                            Text(signUpButton)
+                        }
                     }
                 }
-            )
+            }
 
-            TextButton(onClick = { navController.navigate("signinpage") }) {
-                Text("Already have an account? Sign In")
+            AppTextButton(onClick = { navController.navigate("login") }) {
+                Text(signUpHaveAccount)
             }
         }
     }
