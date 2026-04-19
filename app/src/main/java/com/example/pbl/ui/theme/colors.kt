@@ -2,9 +2,24 @@ package com.example.pbl.ui.theme
 
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-// Light :angel: Theme Colourssss
+data class CustomColors(
+    val success: Color,
+    val successContainer: Color,
+    val onSuccessContainer: Color
+)
+
+val LocalCustomColors = staticCompositionLocalOf {
+    CustomColors(
+        success = Color.Unspecified,
+        successContainer = Color.Unspecified,
+        onSuccessContainer = Color.Unspecified
+    )
+}
+
+// Light 😇 Theme Colourssss
 // biru normal
 private val lightThemePrimary = Color(0xFF1A237E)
 private val lightThemePrimaryContainer = Color(0xFFC5CAE9)
@@ -15,7 +30,7 @@ private val lightThemeSecondary = Color(0xFF6A1B9A)
 private val lightThemeSecondaryContainer = Color(0xFFE1BEE7)
 private val lightThemeOnSecondaryContainer = Color(0xFF2A083D)
 
-// hijau :thumbsup:
+// hijau 👍
 private val lightThemeTertiary = Color(0xFF2E7D32)
 private val lightThemeTertiaryContainer = Color(0xFFC8E6C9)
 private val lightThemeOnTertiaryContainer = Color(0xFF102A13)
@@ -29,8 +44,12 @@ private val lightThemeError = Color(0xFFD32F2F)
 private val lightThemeErrorContainer = Color(0xFFFFCDD2)
 private val lightThemeOnErrorContainer = Color(0xFF7F0000)
 
+// gren for success
+private val lightThemeSuccess = Color(0xFF4CAF50)
+private val lightThemeSuccessContainer = Color(0xFFC8E6C9)
+private val lightThemeOnSuccessContainer = Color(0xFF1B5E20)
 
-// Dark :demon: Theme Colourssss
+// Dark 😈 Theme Colourssss
 // gojo amplify technique fr
 private val darkThemePrimary = Color(0xFF9FA8DA)
 private val darkThemePrimaryContainer = Color(0xFF1A237E)
@@ -55,6 +74,10 @@ private val darkThemeError = Color(0xFFEF5350)
 private val darkThemeErrorContainer = Color(0xFF7F0000)
 private val darkThemeOnErrorContainer = Color(0xFFFFCDD2)
 
+// gren for success but cooler
+private val darkThemeSuccess = Color(0xFF81C784)
+private val darkThemeSuccessContainer = Color(0xFF1B5E20)
+private val darkThemeOnSuccessContainer = Color(0xFFC8E6C9)
 
 // We use 'em light theme coloursssss
 val lightColors = lightColorScheme(
@@ -71,7 +94,13 @@ val lightColors = lightColorScheme(
     surface = lightThemeSurface,
     error = lightThemeError,
     errorContainer = lightThemeErrorContainer,
-    onErrorContainer = lightThemeOnErrorContainer,
+    onErrorContainer = lightThemeOnErrorContainer
+)
+
+val lightCustomColors = CustomColors(
+    success = lightThemeSuccess,
+    successContainer = lightThemeSuccessContainer,
+    onSuccessContainer = lightThemeOnSuccessContainer
 )
 
 // repeat
@@ -90,4 +119,10 @@ val darkColors = darkColorScheme(
     error = darkThemeError,
     errorContainer = darkThemeErrorContainer,
     onErrorContainer = darkThemeOnErrorContainer
+)
+
+val darkCustomColors = CustomColors(
+    success = darkThemeSuccess,
+    successContainer = darkThemeSuccessContainer,
+    onSuccessContainer = darkThemeOnSuccessContainer
 )

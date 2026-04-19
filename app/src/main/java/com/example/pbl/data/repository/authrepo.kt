@@ -1,16 +1,23 @@
 package com.example.pbl.data.repository
 
+import com.example.pbl.data.model.userData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 
-class authRepo {
+class AuthRepo {
     private val auth = FirebaseAuth.getInstance()
 
     // REGISTER
     suspend fun register(
         email: String,
-        password: String
+        password: String,
+        firstName: String,
+        lastName: String,
+        alias: String
     ): Result<FirebaseUser> {
         return try {
             val result = auth
@@ -18,6 +25,17 @@ class authRepo {
                 .await()
 
             val user = result.user!!
+            
+            // Save additional user data
+            val repo = UserRepo()
+            repo.saveUser(userData(
+                id = user.uid,
+                firstName = firstName,
+                lastName = lastName,
+                alias = alias,
+                email = email
+            ))
+
             // Send email verification
             user.sendEmailVerification().await()
 
@@ -38,6 +56,12 @@ class authRepo {
                 .await()
 
             Result.success(result.user!!)
+        } catch (e: FirebaseAuthInvalidUserException) {
+            Result.failure(Exception("USER_NOT_FOUND"))
+        } catch (e: FirebaseAuthInvalidCredentialsException) {
+            Result.failure(Exception("WRONG_PASSWORD"))
+        } catch (e: FirebaseAuthException) {
+            Result.failure(Exception(e.errorCode))
         } catch (e: Exception) {
             Result.failure(e)
         }

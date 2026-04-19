@@ -4,7 +4,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import com.example.pbl.data.model.userData
 
-class userRepo {
+class UserRepo {
     private val db = FirebaseFirestore.getInstance()
 
     suspend fun saveUser(user: userData): Result<Unit> {

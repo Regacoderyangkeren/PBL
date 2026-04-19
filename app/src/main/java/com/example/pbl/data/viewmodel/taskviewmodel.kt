@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pbl.data.model.Task
 import com.example.pbl.data.model.TaskStatus
-import com.example.pbl.data.repository.taskRepo
+import com.example.pbl.data.repository.TaskRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -31,7 +31,7 @@ sealed class TaskActionState {
 }
 
 class TaskViewModel : ViewModel() {
-    private val taskRepo = taskRepo()
+    private val taskRepo = TaskRepo()
 
     private val _taskListState = MutableStateFlow<TaskListState>(TaskListState.Idle)
     val taskListState: StateFlow<TaskListState> = _taskListState

@@ -3,7 +3,7 @@ package com.example.pbl.data.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pbl.data.model.Project
-import com.example.pbl.data.repository.projectRepo
+import com.example.pbl.data.repository.ProjectRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -30,7 +30,7 @@ sealed class ProjectActionState {
 }
 
 class ProjectViewModel : ViewModel() {
-    private val projectRepo = projectRepo()
+    private val projectRepo = ProjectRepo()
 
     private val _projectListState = MutableStateFlow<ProjectListState>(ProjectListState.Idle)
     val projectListState: StateFlow<ProjectListState> = _projectListState

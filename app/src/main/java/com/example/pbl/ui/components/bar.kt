@@ -1,8 +1,9 @@
 package com.example.pbl.ui.components
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,7 +26,7 @@ fun AppScaffold(
     Scaffold(
         topBar = {
             TopAppBar(
-                modifier = Modifier.statusBarsPadding(),
+                windowInsets = TopAppBarDefaults.windowInsets, 
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
@@ -37,7 +38,11 @@ fun AppScaffold(
                 actions = actions
             )
         },
-        bottomBar = bottomBar,
+        bottomBar = {
+            Box(Modifier.navigationBarsPadding()) {
+                bottomBar()
+            }
+        },
         content = { innerPadding ->
             content(innerPadding)
         }

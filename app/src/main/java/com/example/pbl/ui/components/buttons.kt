@@ -17,6 +17,7 @@ import com.example.pbl.ui.animation.appColorButtonAnim
 fun AppFilledButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     containerColor: Color = MaterialTheme.colorScheme.primary,
     contentColor: Color = MaterialTheme.colorScheme.onPrimary,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
@@ -30,6 +31,7 @@ fun AppFilledButton(
     Button(
         onClick = safeClick,
         modifier = modifier,
+        enabled = enabled,
         interactionSource = interactionSource,
         colors = appColorButtonAnim(
             isSelected = isPressed,
@@ -48,6 +50,7 @@ fun AppFilledButton(
 fun AppTonalButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     containerColor: Color = MaterialTheme.colorScheme.secondaryContainer,
     contentColor: Color = MaterialTheme.colorScheme.onSecondaryContainer,
     pressedContainerColor: Color = MaterialTheme.colorScheme.secondary,
@@ -61,6 +64,7 @@ fun AppTonalButton(
     FilledTonalButton(
         onClick = safeClick,
         modifier = modifier,
+        enabled = enabled,
         interactionSource = interactionSource,
         colors = appColorButtonAnim(
             isSelected = isPressed,
@@ -79,6 +83,7 @@ fun AppTonalButton(
 fun AppOutlinedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     contentColor: Color = MaterialTheme.colorScheme.primary,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f),
     pressedContentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -91,6 +96,7 @@ fun AppOutlinedButton(
     OutlinedButton(
         onClick = safeClick,
         modifier = modifier,
+        enabled = enabled,
         interactionSource = interactionSource,
         shape = MaterialTheme.shapes.medium,
         colors = appColorButtonAnim(
@@ -113,6 +119,7 @@ fun AppOutlinedButton(
 fun AppElevatedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     containerColor: Color = MaterialTheme.colorScheme.surface,
     contentColor: Color = MaterialTheme.colorScheme.primary,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer,
@@ -126,6 +133,7 @@ fun AppElevatedButton(
     ElevatedButton(
         onClick = safeClick,
         modifier = modifier,
+        enabled = enabled,
         interactionSource = interactionSource,
         colors = appColorButtonAnim(
             isSelected = isPressed,
@@ -144,6 +152,7 @@ fun AppElevatedButton(
 fun AppTextButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     contentColor: Color = MaterialTheme.colorScheme.primary,
     pressedContentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
     pressedContainerColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f),
@@ -156,6 +165,7 @@ fun AppTextButton(
     TextButton(
         onClick = safeClick,
         modifier = modifier,
+        enabled = enabled,
         interactionSource = interactionSource,
         colors = appColorButtonAnim(
             isSelected = isPressed,

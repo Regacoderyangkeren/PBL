@@ -4,7 +4,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import com.example.pbl.data.model.Project
 
-class projectRepo {
+class ProjectRepo {
     private val db = FirebaseFirestore.getInstance()
 
     suspend fun createProject(project: Project): Result<Unit> {

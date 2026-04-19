@@ -3,7 +3,7 @@ package com.example.pbl.data.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pbl.data.model.userData
-import com.example.pbl.data.repository.userRepo
+import com.example.pbl.data.repository.UserRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ sealed class UserActionState {
 }
 
 class UserViewModel : ViewModel() {
-    private val userRepo = userRepo()
+    private val userRepo = UserRepo()
 
     private val _userState = MutableStateFlow<UserState>(UserState.Idle)
     val userState: StateFlow<UserState> = _userState

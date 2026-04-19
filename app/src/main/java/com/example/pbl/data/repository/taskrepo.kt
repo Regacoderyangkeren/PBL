@@ -5,7 +5,7 @@ import kotlinx.coroutines.tasks.await
 import com.example.pbl.data.model.Task
 import com.example.pbl.data.model.TaskStatus
 
-class taskRepo {
+class TaskRepo {
     private val db = FirebaseFirestore.getInstance()
 
     suspend fun createTask(task: Task): Result<Unit> {

@@ -20,8 +20,7 @@ fun LandingPage(navController: NavController) {
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
                 modifier = Modifier.fillMaxWidth(),
@@ -43,10 +42,14 @@ fun LandingPage(navController: NavController) {
                 }
             }
 
+            Spacer(modifier = Modifier.height(24.dp))
+
             Text(
                 text = subtitleDrop,
-                style = MaterialTheme.typography.displayLarge,
-                modifier = Modifier.padding(horizontal = 24.dp)
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp)
             )
 
             Spacer(modifier = Modifier.weight(1f))
@@ -59,6 +62,8 @@ fun LandingPage(navController: NavController) {
             ) {
                 Text(text = landingPagebtn1)
             }
+
+            Spacer(modifier = Modifier.height(12.dp))
 
             AppOutlinedButton(
                 onClick = { navController.navigate("login") },
