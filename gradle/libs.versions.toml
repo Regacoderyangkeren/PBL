@@ -17,6 +17,8 @@ foundationLayout = "1.10.4"
 ui = "1.10.4"
 uiTest = "1.10.4"
 firebaseFirestoreKtx = "26.1.2"
+androidxComposeIcons = "1.7.5"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +44,9 @@ androidx-foundation-layout = { group = "androidx.compose.foundation", name = "fo
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test", version.ref = "uiTest" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidxComposeIcons" }
+androidx-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core", version.ref = "androidxComposeIcons" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
