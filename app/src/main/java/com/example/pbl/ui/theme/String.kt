@@ -1,6 +1,10 @@
 package com.example.pbl.ui.theme
 const val userPassword = "Password"
 
+// Password visibility
+const val passwordShowLabel = "Show password"
+const val passwordHideLabel = "Hide password"
+
 // for basic error catch
 const val errorInputBlank = "Input cannot be empty"
 const val errorNotAlphanumeric = "Input can only contain letters and numbers"
@@ -37,7 +41,7 @@ const val errorConfirmPasswordMismatch = "Passwords do not match"
 // Login Error
 const val errorLoginEmail = "No user found with this email"
 const val errorLoginPassword = "Incorrect password"
-const val errorLoginInvalidEmail = "Invalid email format"
+const val errorLoginInvalidCredential = "Email or password is incorrect"
 const val errorEmailInUse = "This email is already registered."
 const val errorNetworkGeneral = "Network error. Please try again."
 const val errorUnknown = "Something went wrong. Please try again."
@@ -47,12 +51,15 @@ const val errorVerifyTimeout = "Verification timed out. Your registration has be
 // Loading states
 const val loadingRegistering = "Registering..."
 const val loadingSigningIn = "Signing in..."
+const val loadingCheckAccount = "Check Account & Continue"
+const val loadingAccountNotFound = "Account not found. Please register again."
 
 // Error codes (internal)
 const val errorCodeEmailInUse = "EMAIL_IN_USE"
 const val errorCodeInvalidEmail = "INVALID_EMAIL"
 const val errorCodeUserNotFound = "USER_NOT_FOUND"
 const val errorCodeWrongPassword = "WRONG_PASSWORD"
+const val errorCodeInvalidCredential  = "INVALID_CREDENTIAL"
 const val errorCodeNetworkError = "NETWORK_ERROR"
 
 // Internal error messages
@@ -75,7 +82,6 @@ const val forgotPasswordSuccess = "Reset link sent! Check your inbox."
 const val forgotPasswordBackToLogin = "Back to Sign In"
 
 // SignUp Screen
-const val signUp = "Sign Up"
 const val signUpTitle = "Create Account"
 const val signUpSubtitle = "Your journey begins here!"
 const val signUpEmail = "Email"

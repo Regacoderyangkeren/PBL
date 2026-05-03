@@ -1,4 +1,4 @@
-package com.example.pbl.ui.util.helper
+package com.example.pbl.ui.util.uihelper
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

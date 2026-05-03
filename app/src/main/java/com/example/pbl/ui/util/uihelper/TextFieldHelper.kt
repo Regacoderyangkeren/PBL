@@ -1,4 +1,4 @@
-package com.example.pbl.ui.util.helper
+package com.example.pbl.ui.util.uihelper
 
 import android.util.Patterns
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -65,7 +65,7 @@ fun isValidEmail(email: String): Boolean =
 fun isValidPassword(password: String): Boolean =
     password.length >= 10 &&
             password.any { it.isDigit() } &&
-            password.any { it.isLetter() } &&
+            password.any { it.isLowerCase() } &&
             password.any { it.isUpperCase() } &&
             password.any { !it.isLetterOrDigit() }
 
@@ -187,7 +187,7 @@ fun ValidatedTextField(
             trailingIcon = if (isPasswordField) {
                 {
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Icon(
+                         Icon(
                             imageVector =
                                 if (passwordVisible)
                                     Icons.Filled.Visibility
@@ -195,9 +195,9 @@ fun ValidatedTextField(
                                     Icons.Filled.VisibilityOff,
                             contentDescription =
                                 if (passwordVisible)
-                                    "Hide password"
+                                    passwordHideLabel
                                 else
-                                    "Show password",
+                                    passwordShowLabel,
                             modifier = Modifier.size(20.dp)
                         )
                     }

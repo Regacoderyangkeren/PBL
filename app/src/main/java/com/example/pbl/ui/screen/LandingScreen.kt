@@ -11,10 +11,11 @@ import com.example.pbl.ui.components.*
 import com.example.pbl.ui.theme.*
 
 @Composable
-fun LandingPage(navController: NavController) {
+fun LandingPage(navController: NavController, innerPadding: PaddingValues) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
+            .padding(innerPadding)
             .statusBarsPadding(),
         color = MaterialTheme.colorScheme.background
     ) {

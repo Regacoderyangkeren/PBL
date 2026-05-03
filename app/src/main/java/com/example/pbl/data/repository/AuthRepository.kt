@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.FirebaseNetworkException
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withTimeout
 import com.example.pbl.ui.theme.*
@@ -55,6 +56,8 @@ class AuthRepository(
             Result.failure(Exception(errorCodeEmailInUse))
         } catch (e: FirebaseAuthInvalidCredentialsException) {
             Result.failure(Exception(errorCodeInvalidEmail))
+        } catch (e: FirebaseNetworkException) {
+            Result.failure(Exception(errorCodeNetworkError))
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -68,13 +71,19 @@ class AuthRepository(
             }
             Result.success(result.user!!)
         } catch (e: FirebaseAuthInvalidUserException) {
-            Result.failure(Exception("USER_NOT_FOUND"))
+            Log.e("AuthRepo", "InvalidUser: ${e.errorCode}")
+            Result.failure(Exception(errorCodeUserNotFound))
         } catch (e: FirebaseAuthInvalidCredentialsException) {
-            Result.failure(Exception("WRONG_PASSWORD"))
+            if (e.errorCode == "ERROR_INVALID_CREDENTIAL") {
+                Result.failure(Exception(errorCodeInvalidCredential))
+            } else {
+                Result.failure(Exception(errorCodeWrongPassword))
+            }
+        } catch (e: FirebaseNetworkException) {
+            Result.failure(Exception(errorCodeNetworkError))
         } catch (e: FirebaseAuthException) {
+            Log.e("AuthRepo", "AuthException: ${e.errorCode}")
             Result.failure(Exception(e.errorCode))
-        } catch (e: Exception) {
-            Result.failure(e)
         }
     }
 

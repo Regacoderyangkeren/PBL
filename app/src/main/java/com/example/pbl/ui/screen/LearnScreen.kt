@@ -1,11 +1,12 @@
 package com.example.pbl.ui.screen
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.example.pbl.ui.theme.*
 
 @Composable
-fun LearnPage(NavController: NavController) {
+fun LearnPage(navController: NavController, innerPadding: PaddingValues) {
     val title = titleDrop
     val Subtitle = listOf(
         landingPage1,
@@ -19,7 +20,4 @@ fun LearnPage(NavController: NavController) {
         landingpagesub3,
         landingpagesub4
     )
-
-
-
 }

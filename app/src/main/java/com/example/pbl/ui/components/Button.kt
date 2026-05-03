@@ -10,7 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.example.pbl.ui.util.helper.preventButtonSpamClicks
+import com.example.pbl.ui.util.uihelper.preventButtonSpamClicks
 import com.example.pbl.ui.animation.appColorButtonAnim
 
 @Composable

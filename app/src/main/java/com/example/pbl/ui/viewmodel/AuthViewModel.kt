@@ -1,6 +1,5 @@
 package com.example.pbl.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
@@ -12,6 +11,7 @@ import com.example.pbl.ui.theme.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.TimeoutCancellationException
 
 // State (persistent)
 sealed class AuthState {
@@ -25,7 +25,7 @@ sealed class AuthEvent {
     object NavigateToHome : AuthEvent()
     object NavigateToEmailVerify : AuthEvent()
     object LoadingTimedOut : AuthEvent()
-    data class ShowError(val message: String) : AuthEvent()
+    data class ShowError(val error: UiError) : AuthEvent()
 }
 
 // ViewModel
@@ -70,12 +70,12 @@ class AuthViewModel(
         viewModelScope.launch {
             _authState.value = AuthState.Loading
             authRepository.login(
-                email    = params.email,
+                email = params.email,
                 password = params.password
             ).fold(
                 onSuccess = { user ->
                     _currentUser.value = user
-                    _authState.value   = AuthState.Idle
+                    _authState.value = AuthState.Idle
                     val event = if (user.isEmailVerified)
                         AuthEvent.NavigateToHome
                     else
@@ -115,12 +115,16 @@ class AuthViewModel(
     }
 
     // Internal
-
     private suspend fun handleError(message: String?) {
-        val uiError = mapError(message)
-        _authState.value = AuthState.Error(uiError)
-        if (uiError is UiError.Message) {
-            _authEvent.send(AuthEvent.ShowError(uiError.text))
+        // Check if error is a timeout
+        if (message?.contains("timeout", ignoreCase = true) == true ||
+            message?.contains("timed", ignoreCase = true) == true) {
+            _authState.value = AuthState.Error(UiError.Message(errorLoadingTimeout))
+            _authEvent.send(AuthEvent.LoadingTimedOut)
+        } else {
+            val uiError = mapError(message)
+            _authState.value = AuthState.Error(uiError)
+            _authEvent.send(AuthEvent.ShowError(uiError))
         }
     }
 
@@ -130,6 +134,7 @@ class AuthViewModel(
         "USER_NOT_FOUND" -> UiError.Message(errorLoginEmail)
         "WRONG_PASSWORD" -> UiError.InvalidCredentials
         "NETWORK_ERROR" -> UiError.NetworkError
+        errorCodeInvalidCredential -> UiError.Message(errorLoginInvalidCredential)
         else -> UiError.Message(errorUnknown)
     }
 
